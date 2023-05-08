@@ -41,17 +41,17 @@ app.post('/api/travel-time', async (req, res) => {
         key: GOOGLE_MAPS_ACCESS_KEY,
       },
     });
+    // Save the response data to a JSON file
+    fs.writeFile('response_data.json', JSON.stringify(response.data, null, 2), (err) => {
+      if (err) throw err;
+      console.log('Response saved to response_data.json');
+    });
 
     if (response.data.status === 'OK' && response.data.rows.length > 0) {
-      // Save the response data to a JSON file
-      fs.writeFile('response_data.json', JSON.stringify(response.data, null, 2), (err) => {
-        if (err) throw err;
-        console.log('Response saved to response_data.json');
-      });
-      const distanceMatrix = response.data.rows.map((row, i) =>
+      const durationMatrix = response.data.rows.map((row, i) =>
         row.elements.map((element, j) => (i === j ? Infinity : element.duration.value))
       );
-      const shortestPath = findShortestPath(locations, distanceMatrix);
+      const shortestPath = findShortestPath(locations, durationMatrix);
       return res.json({ shortestPath });
     } else {
       return res.status(500).json({ error: 'Failed to fetch travel time from Google Maps API' });

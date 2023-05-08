@@ -1,0 +1,35 @@
+{
+  "name": "itinerary-planner",
+  "version": "1.0.0",
+  "description": "Current plan: Brute force TSP",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xzllzx/itinerary-planner.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "react",
+    "javascript"
+  ],
+  "author": "ZX",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/xzllzx/itinerary-planner/issues"
+  },
+  "homepage": "https://github.com/xzllzx/itinerary-planner#readme",
+  "proxy": "http://localhost:3001",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "http-proxy-middleware": "^2.0.1",
+    "itertools": "^2.1.1",
+    "path": "^0.12.7",
+    "serve-static": "^1.15.0"
+  }
+}
